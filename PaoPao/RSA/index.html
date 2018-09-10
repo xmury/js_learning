@@ -57,7 +57,45 @@
         mas[1] = 0; 
         return a; 
     } 
-
+    
+    function text_to_num(text){
+      text = text.toLowerCase;
+      var newText = "";
+      for (var i = 0; text.length -1 > i; i++){
+       switch (text[i]) {
+          case 'a': newText += "01"; break; 
+          case 'b': newText += "02"; break;
+          case 'c': newText += "03"; break;
+          case 'd': newText += "04"; break;
+          case 'i': newText += "05"; break;
+          case 'f': newText += "06"; break;
+          case 'g': newText += "07"; break;
+          case 'h': newText += "08"; break;
+          case 'i': newText += "09"; break;
+          case 'j': newText += "10"; break;
+          case 'k': newText += "11"; break;
+          case 'l': newText += "12"; break;
+          case 'm': newText += "13"; break;
+          case 'n': newText += "14"; break;
+          case 'o': newText += "15"; break;
+          case 'p': newText += "16"; break;
+          case 'q': newText += "17"; break;
+          case 'r': newText += "18"; break;
+          case 's': newText += "19"; break;
+          case 't': newText += "20"; break;
+          case 'u': newText += "21"; break;
+          case 'v': newText += "22"; break;
+          case 'w': newText += "23"; break;
+          case 'x': newText += "24"; break;
+          case 'y': newText += "25"; break;
+          case 'z': newText += "26"; break;
+          break;
+       
+         default:
+           break;
+       }
+      }
+    }
     var x2 = 1; var x1 = 0; 
     var y2 = 0; var y1 = 1; 
 
