@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RSA test</title>
+    <script src="rsa.js"></script>
+  </head>
+  <body>
+    <div>
+      <input type="text" class="form" id="public" placeholder="Публичный ключ">
+      <input type="text" class="form" id="private" placeholder="Приватный ключ">
+      <input type="text" class="form" id="test"   placeholder="Тестовый ключ">
+    </div>
+    <hr>
+    <div>
+      <button class="btn btn-default" onclick="Generation()">Генерация</button>
+      <button class="btn btn-default" onclick="rsaTest()">Проверка</button>
+    </div>
+    <hr>
+  </body>
+</html>
