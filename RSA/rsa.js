@@ -1,6 +1,6 @@
 function rsaGen(){
     document.getElementById('private').value = 10;
-  }
+}
 
 function text_to_num(text){
   text = text.toLowerCase;
@@ -63,12 +63,12 @@ function Generation(){
     }
     else { 
       console.log("d Секретная экспонента : " + d);
-      document.write("<div>");
-      document.write("Произведение: " + mod         + "<br>");
-      document.write("Функция Эйлера: " + f         + "<br>");
-      document.write("Открытая экспонента: " + e    + "<br>");
-      document.write("Секретная экспонента : " + d  + "<br>");
-      document.write("</div>");
+      document.body.innerHTML += "<div>";
+      document.body.innerHTML += "Произведение: " + mod         + "<br>";
+      document.body.innerHTML += "Функция Эйлера: " + f         + "<br>";
+      document.body.innerHTML += "Открытая экспонента: " + e    + "<br>";
+      document.body.innerHTML += "Секретная экспонента : " + d  + "<br>";
+      document.body.innerHTML += "</div>";
       break; 
     }
   }
