@@ -68,7 +68,7 @@ function Generation(){
       document.body.innerHTML += "Функция Эйлера: " + f         + "<br>";
       document.body.innerHTML += "Открытая экспонента: " + e    + "<br>";
       document.body.innerHTML += "Секретная экспонента : " + d  + "<br>";
-      document.body.innerHTML += "</div>";
+      document.body.innerHTML += "<hr> </div>";
       break; 
     }
   }
