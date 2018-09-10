@@ -6,17 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RSA test</title>
     <script src="rsa.js"></script>
+    <style>
+    .form {
+      text-align: center;
+      height: 50px;
+      width: 24%;
+    }
+    .btn_div {
+      text-align: center;
+    }
+    .btn {
+      width: 100px;
+      height: 50px;
+    }
+    </style>
   </head>
   <body>
     <div>
-      <input type="text" class="form" id="public" placeholder="Публичный ключ">
-      <input type="text" class="form" id="private" placeholder="Приватный ключ">
-      <input type="text" class="form" id="test"   placeholder="Тестовый ключ">
+      <input type="text" class="form" id="text_in"    placeholder="Текст для шифрования">
+      <input type="text" class="form" id="shifr_out"  placeholder="Шифр">
+      <input type="text" class="form" id="shifr_in"   placeholder="Шифрованный текст">
+      <input type="text" class="form" id="text_out"   placeholder="Исходный тест">
     </div>
     <hr>
-    <div>
-      <button class="btn btn-default" onclick="Generation()">Генерация</button>
-      <button class="btn btn-default" onclick="rsaTest()">Проверка</button>
+    <div class="btn_div">
+      <button class="btn btn-default" onclick="rsaTest()">Шифровка</button>
+      <button class="btn btn-default" onclick="Generation()">Генерация ключей</button>
+      <button class="btn btn-default" onclick="rsaTest()">Расшифровка</button>
     </div>
     <hr>
     <footer if="footer"></footer>
