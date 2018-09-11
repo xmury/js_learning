@@ -3,18 +3,46 @@ var p , q , mod , f , e , d;
 
 function UnShifration(){
     var shift = document.getElementById('shifr_out').value;
-    console.log("shifr = " + shift);
     var un_shift = Math.pow(shift, d) % mod;
-    console.log("Match : " + Math.pow(shift, d) % mod);
-    console.log("unshifr = " + un_shift);
     var text = num_to_text(un_shift);
-    document.getElementById('text_out').value = text;
+
+    console.log("shifr = " + shift);
+    console.log("Match : " + Math.pow(shift, d));
+    console.log("unshifr = " + un_shift);
+
+    document.getElementById('text_out').value = un_shift;
 
 }
 function Shifration(){
     var text = document.getElementById('text_in').value;
-    var bin_text = text_to_num(text); 
+    // var bin_text = text_to_num(text); 
+    var bin_text = text
+    console.log("bin text: " + bin_text);
     document.getElementById('shifr_out').value = Math.pow(bin_text, e) % mod;
+}
+
+
+function WikiExemple(){
+    p = 3; 
+    q = 7;
+    mod = p * q;
+    f = 12;
+    e = 5;
+    d = 5;
+
+	console.log("p/q Два простых числа: " + p + " | " + q);
+	console.log("mod Произведение: " + mod);
+	console.log("f Функция Эйлера: " + f);
+	console.log("e Открытая экспонента: " + e);
+	console.log("d Секретная экспонента : " + d);
+
+	document.body.innerHTML += "<div>";
+	document.body.innerHTML += "p и q: " + p + " " + q 		  + "<br>";
+	document.body.innerHTML += "Произведение: " + mod         + "<br>";
+	document.body.innerHTML += "Функция Эйлера: " + f         + "<br>";
+	document.body.innerHTML += "Открытая экспонента: " + e    + "<br>";
+	document.body.innerHTML += "Секретная экспонента : " + d  + "<br>";
+	document.body.innerHTML += "<hr> </div>";
 }
 
 function Generation(){
@@ -38,50 +66,52 @@ function Generation(){
       continue; 
     }
     else { 
-      console.log("d Секретная экспонента : " + d);
-      document.body.innerHTML += "<div>";
-      document.body.innerHTML += "Произведение: " + mod         + "<br>";
-      document.body.innerHTML += "Функция Эйлера: " + f         + "<br>";
-      document.body.innerHTML += "Открытая экспонента: " + e    + "<br>";
-      document.body.innerHTML += "Секретная экспонента : " + d  + "<br>";
-      document.body.innerHTML += "<hr> </div>";
-      break; 
+		console.log("d Секретная экспонента : " + d);
+		document.body.innerHTML += "<div>";
+		document.body.innerHTML += "p и q: " + p + " " + q		  + "<br>";
+
+		document.body.innerHTML += "Произведение: " + mod         + "<br>";
+		document.body.innerHTML += "Функция Эйлера: " + f         + "<br>";
+		document.body.innerHTML += "Открытая экспонента: " + e    + "<br>";
+		document.body.innerHTML += "Секретная экспонента : " + d  + "<br>";
+		document.body.innerHTML += "<hr> </div>";
+		break; 
     }
   }
 
-  function randomvareger(min, max) {
-  var f;
-  while (true){
-    f = 0;
-    var r1 = min - 0.5 + Math.random() * (max - min + 1); r1 = Math.round(r1);
-    var r2 = min - 0.5 + Math.random() * (max - min + 1); r2 = Math.round(r2);
-    
-    if (r1 == r2) { continue; }
-    for(var i = 2; r1 > i; i++){ if (r1 % i == 0){ f++; break } }
-    for(var i = 2; r2 > i; i++){ if (r2 % i == 0){ f++; break } }
-    if (f == 0) { break; }
-  }
-  var rand = [r1 , r2];
-  return rand;
-}
-function funEyler(p , q){ return (p -1) * (q - 1); }
-function secretExp(){ 
-  var t; var mas = [];
-  for(var i = 1; ; i++){
-    t = i * e % f
-    if (t == 1){ mas.push(i); }
+	function randomvareger(min, max) {
+		var f;
+		while (true){
+			f = 0;
+			var r1 = min - 0.5 + Math.random() * (max - min + 1); r1 = Math.round(r1);
+			var r2 = min - 0.5 + Math.random() * (max - min + 1); r2 = Math.round(r2);
 
-    if (i > 1000){
-      if (mod.length > 1 || i < 1000000){ break; }
-    }
-  }
-  // console.log(mas);
-  if (mas.length > 0){ 
-    var i = 0 - 0.5 + Math.random() * ((mas.length-1) - 0 + 1); i = Math.round(i);
-    return mas[i]; 
-  }
-  else { return false; }
-}
+			if (r1 == r2) { continue; }
+			for(var i = 2; r1 > i; i++){ if (r1 % i == 0){ f++; break } }
+			for(var i = 2; r2 > i; i++){ if (r2 % i == 0){ f++; break } }
+			if (f == 0) { break; }
+			}
+		var rand = [r1 , r2];
+		return rand;
+	}
+	function funEyler(p , q){ return (p -1) * (q - 1); }
+	function secretExp(){ 
+		var t; var mas = [];
+		for(var i = 1; ; i++){
+		t = i * e % f
+		if (t == 1){ mas.push(i); }
+
+		if (i > 1000){
+		  if (mod.length > 1 || i < 1000000){ break; }
+		}
+		}
+		// console.log(mas);
+		if (mas.length > 0){ 
+		var i = 0 - 0.5 + Math.random() * ((mas.length-1) - 0 + 1); i = Math.round(i);
+		return mas[i]; 
+		}
+		else { return false; }
+	}
 }
 
 function text_to_num(text){
