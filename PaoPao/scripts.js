@@ -1,16 +1,17 @@
 var area = [[]]; var plan = [[]];
 var arr = ['', 'red', 'blue', 'green' , '#806b2a' , 'brown' , '#cc6c5c' , 'orange'];
-var button1 = []; var button2 = [];
+var button1 = []; var button2 = []; var xMax = 0; var yMax = 0;
+
 function genArea(){ // Создание и вывод поля
-    var xMax = document.getElementById('x').value;
-    var yMax = document.getElementById('y').value;
+    xMax = document.getElementById('x').value;
+    yMax = document.getElementById('y').value;
     var widthBox = `${100/xMax}%`;
     var heightBox = `${100/yMax}%`;
     console.log(area);
     var div_area = document.createElement('div');
     div_area.classList = 'area';
     
-    var x = 1; var y = 1;
+    x = 1; y = 1;
     for (; y <= yMax; y++ ){
         area[x] = []; plan[x] = [];
         for (; x <= xMax; x++ ){
