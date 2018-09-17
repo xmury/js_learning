@@ -4,9 +4,14 @@ function stalker(way , start){
 
     while (test){
         way[0] == 'x' ? x++ : y++; // Сдиг по маршруту
-
-        if (pole[x][y] != 0) { return muving; }
+        console.log(`coor : ${x}:${y} | ${area[x][y]}`)
+        // Проверка на пустоту ячейки
+        if (area[x][y] != 0) { return muving; }
         else { muving.push([x,y]); }      
+
+        // Выделение
+        var obj = document.getElementById(`${x}:${y}`); 
+        obj.innerHTML = "."; obj.style.background = "white";  obj.style.color = "white";    
 
         // Проверка границ
         if(way[1] == 0) { way[0] == 'x' ? test = x != 0 : y != 0; } // Убывание

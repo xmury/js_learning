@@ -17,7 +17,7 @@ function genArea(){ // Создание и вывод поля
         for (; x <= xMax; x++ ){
             var min = 1; var max = arr.length-1;
             var rand = min - 0.5 + Math.random() * (max - min + 1); rand = Math.round(rand);            
-            area[x] = rand;
+            area[x][y] = rand;
             div_area.innerHTML += `<button class='btn' 
             onclick="clicker([${x},${y}])" id = '${x}:${y}'
             style=' width: ${widthBox}; height: ${heightBox}; 
