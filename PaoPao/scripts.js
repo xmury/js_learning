@@ -45,7 +45,7 @@ function clicker(val){  // Обработка нажатия на кнопку
 
     // "Удаление" кнопки
     var obj = document.getElementById(`${val[0]}:${val[1]}`); 
-    obj.value = "-"; obj.style.background = "white";
+    obj.innerHTML = "."; obj.style.background = "white";  obj.style.color = "white";    
     area[val[0]][val[1]] = 0
 }
 
