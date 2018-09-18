@@ -1,4 +1,4 @@
-var area = [[]]; var plan = [[]];
+var area = []; var plan = [[]];
 var arr = ['', 'red', 'blue', 'green' , '#806b2a' , 'brown' , '#cc6c5c' , 'orange'];
 var button1 = []; var button2 = []; var xMax = 0; var yMax = 0;
 
@@ -7,31 +7,33 @@ function genArea(){ // Создание и вывод поля
     yMax = document.getElementById('y').value;
     var widthBox = `${100/xMax}%`;
     var heightBox = `${100/yMax}%`;
-    console.log(area);
+
+    // GenArea
+    for (var x = 1; x <= xMax; x++ ){ area[x] = []; }
+
     var div_area = document.createElement('div');
     div_area.classList = 'area';
     
-    x = 1; y = 1;
+    var x = 1; var y = 1;
     for (; y <= yMax; y++ ){
-        area[x] = []; plan[x] = [];
+        plan[x] = [];
         for (; x <= xMax; x++ ){
             var min = 1; var max = arr.length-1;
             var rand = min - 0.5 + Math.random() * (max - min + 1); rand = Math.round(rand);            
+            
             area[x][y] = rand;
+
             div_area.innerHTML += `<button class='btn' 
             onclick="clicker([${x},${y}])" id = '${x}:${y}'
             style=' width: ${widthBox}; height: ${heightBox}; 
             background:${arr[rand]};'>${x}:${y}</button>`;
         }
-        // div_area.innerHTML += `</div>`
-        
         x = 1;
     }
     space.appendChild(div_area);
 }
 
 function clicker(val){  // Обработка нажатия на кнопку
-    console.log(val);
     if (button1[0] == undefined) { button1 = val }  
     else if (button2[0] == undefined) { 
         button2 = val 
@@ -39,6 +41,8 @@ function clicker(val){  // Обработка нажатия на кнопку
         // Удалить кнопку если true и проверить поле на пустоту
         // Очистить button1 и button2
         // Ничего не делать если false
+        button1 = [];
+        button2 = [];
         console.log("Full");
     }
 

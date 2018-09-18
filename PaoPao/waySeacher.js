@@ -17,5 +17,6 @@ function stalker(way , start){
         if(way[1] == 0) { way[0] == 'x' ? test = x != 0 : y != 0; } // Убывание
         else if (way[1] == 1) { way[0] == 'x' ? test = x != xMax+1 : y != yMax+1; } // Возрастание
     }
+    
     return muving;
 }
