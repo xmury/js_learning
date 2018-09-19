@@ -37,12 +37,16 @@ function clicker(val){  // Обработка нажатия на кнопку
     if (button1[0] == undefined) { button1 = val }  
     else if (button2[0] == undefined) { 
         button2 = val 
-        // Вызов сталкера
+        if (button1[0] != button2[0] || button1[1] != button2[1]){
+            stalker();// Вызов сталкера
+        }
+        else {
+            console.log(false);
+        }
         // Удалить кнопку если true и проверить поле на пустоту
         // Очистить button1 и button2
         // Ничего не делать если false
-        button1 = [];
-        button2 = [];
+        button1 = []; button2 = [];
         console.log("Full");
     }
 
