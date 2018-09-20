@@ -4,9 +4,53 @@ function stalker(){
     mass_button2 = collector(button2[0] , button2[1]);
     mass_button1.push([ button1[0] , button1[1] ]);
     mass_button2.push([ button2[0] , button2[1] ]);
-    searchNode()
+    arr_nodes = searchNode()
     
-    // testNode(searchNode());
+    return testNode(arr_nodes);
+}
+
+function testNode(arr_nodes){
+    console.log('arr_nodes');    
+    console.log(arr_nodes);
+    for (var i = 0; i < arr_nodes.length; i++ ){
+        r2_out = router2(arr_nodes[i]);
+        console.log(`r2 = ${r2_out}`);
+        if (r2_out) { return true; }
+    }
+
+    return false;
+}
+
+function router2(nodes){
+    start = nodes.start;
+    end = nodes.end;
+
+    startX = start[0]; startY = start[1];
+    endX = end[0]; endY = end[1];
+
+    ifX = startX == endX;                                   // Статичен ли Х
+    ifY = startY == endY;                                   // Статичен ли Y
+
+    if (ifX && ifY) { return true; }                        // Равны ли начало и конец
+
+    if (ifX) { moreORless = startY > endY; }                // Больше или меньше другой элемент
+    if (ifY) { moreORless = startX > endX; }                // Больше или меньше другой элемент
+    
+    while(true){
+        if (ifX) {                                          // Сдвиг Y
+            if (moreORless) { startY--; }                   // Если конец ниже 
+            else            { startY++; }                   // Если конец выше
+        } 
+        else {                                              // Сдвиг X
+            if (moreORless) { startX--; }                   // Если конец левее 
+            else            { startX++; }                   // Если конец правее
+        } 
+        console.log(`x = ${startX} | y = ${startY}`);
+        if (ifX) { if (startY == endY)  { return true; } }  // Условие
+        else { if (startX == endX)      { return true; } }
+        
+        if (area[startX][startY] != 0)  { return false;  }  // Проход
+    }
 }
 
 function searchNode(){
@@ -39,8 +83,10 @@ function router(way , start){
 
     x = start[0]; y = start[1];
     muving = []; test = true;
-    var obj = document.getElementById(`${x}:${y}`); 
-    obj.innerHTML = `<${x}:${y}>`; obj.style.background = "#006d5b";  obj.style.color = "white"
+
+    // var obj = document.getElementById(`${x}:${y}`); 
+    // obj.innerHTML = `<${x}:${y}>`; obj.style.background = "#006d5b";  obj.style.color = "white"
+
     while (test){
         // Сдиг по маршруту
         if (way[0] == 'x') { 
@@ -62,12 +108,12 @@ function router(way , start){
         }
 
         // Проверка на пустоту ячейки
-        if (area[x][y] != 0) { console.log(muving); return muving; }
+        if (area[x][y] != 0) { return muving; }
         else { muving.push([x,y]); }      
 
         // Выделение
-        var obj = document.getElementById(`${x}:${y}`); 
-        obj.innerHTML = `<${x}:${y}>`; obj.style.background = "black";  obj.style.color = "white";    
+        // var obj = document.getElementById(`${x}:${y}`); 
+        // obj.innerHTML = `<${x}:${y}>`; obj.style.background = "black";  obj.style.color = "white";    
 
     }
     return muving;

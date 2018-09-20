@@ -2,9 +2,9 @@ var area = []; var plan = [[]];
 var arr = ['', 'red', 'blue', 'green' , '#806b2a' , 'brown' , '#cc6c5c' , 'orange'];
 var button1 = []; var button2 = []; var xMax = 0; var yMax = 0;
 
-function genArea(){ // Создание и вывод поля
-    xMax = document.getElementById('x').value;
-    yMax = document.getElementById('y').value;
+function genArea(){                                                     // Создание и вывод поля
+    xMax = +document.getElementById('x').value;
+    yMax = +document.getElementById('y').value;
     var widthBox = `${100/xMax}%`;
     var heightBox = `${100/yMax}%`;
 
@@ -31,33 +31,61 @@ function genArea(){ // Создание и вывод поля
         x = 1;
     }
     space.appendChild(div_area);
+
+    // Добавление пустот по краям
+    area[0] = []; area[xMax+1] = [];
+    console.log(xMax+1);
+    y = 0; for (var x = 0; x <= xMax+1; x++) { area[x][y] = 0; }
+    y = yMax+1; for (var x = 0; x <= xMax+1; x++) { area[x][y] = 0; }
+    x = 0; for (var y = 0; y <= yMax+1; y++) { area[x][y] = 0; }
+    x = xMax+1; for (var y = 0; y <= yMax+1; y++) { area[x][y] = 0; }
+
 }
 
-function clicker(val){  // Обработка нажатия на кнопку
+function clicker(val){                                                  // Обработка нажатия на кнопку
     if (button1[0] == undefined) { button1 = val }  
     else if (button2[0] == undefined) { 
         button2 = val 
-        if (button1[0] != button2[0] || button1[1] != button2[1]){
-            stalker();// Вызов сталкера
+        if1 = button1[0] != button2[0] || button1[1] != button2[1];
+        if2 = area[button1[0]][button1[1]] == area[button2[0]][button2[1]];
+
+        if (if1 && if2){
+            get = stalker();                                            // Вызов сталкера
+
+            if (get) {                                                  // Удалить кнопку если true                           
+                clearButton();
+                button1 = []; button2 = [];                             // Очистить button1 и button2
+            }
+            else {                                                      // Ничего не делать если false  
+                button1 = []; button2 = [];                             // Очистить button1 и button2
+                console.log(false);
+            }
         }
-        else {
-            console.log(false);
-        }
-        // Удалить кнопку если true и проверить поле на пустоту
-        // Очистить button1 и button2
-        // Ничего не делать если false
-        button1 = []; button2 = [];
-        console.log("Full");
+        else { 
+            button1 = []; button2 = [];                                 // Очистить button1 и button2
+            console.log(false); 
+        }                                    
+
+        
     }
-
-
-    // "Удаление" кнопки
-    var obj = document.getElementById(`${val[0]}:${val[1]}`); 
-    obj.innerHTML = "."; obj.style.background = "white";  obj.style.color = "white";    
-    area[val[0]][val[1]] = 0
 }
 
-function testArea(){    // Проверка поля на пустоту
+function clearButton(){                                                 // Отчистить кнопку
+    var obj = document.getElementById(`${button1[0]}:${button1[1]}`);   // Отчистка кнопки 1   
+    // obj.innerHTML = "."; obj.style.color = "white";  
+    obj.style.background = "white"; 
+
+    var obj = document.getElementById(`${button2[0]}:${button2[1]}`);   // Отчистка кнопки 2
+    // obj.innerHTML = ".";  obj.style.color = "white";  
+    obj.style.background = "white";
+
+    area[button1[0][button1[1]]] = 0;                                   // "Удаление" кнопки 1
+    area[button1[0][button1[1]]] = 0;                                   // "Удаление" кнопки 2
+    button1 = []; button2 = [];                                         // Очистить button1 и button2
+    console.log(true);
+}
+
+function testArea(){                                                    // Проверка поля на пустоту
     for (; y <= yMax; y++ ){
         for (; x <= xMax; x++ ){
             if (area[x][y] != 0) {
