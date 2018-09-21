@@ -8,13 +8,10 @@ function stalker(){
     
     return testNode(arr_nodes);
 }
-
+    
 function testNode(arr_nodes){
-    console.log('arr_nodes');    
-    console.log(arr_nodes);
     for (var i = 0; i < arr_nodes.length; i++ ){
         r2_out = router2(arr_nodes[i]);
-        console.log(`r2 = ${r2_out}`);
         if (r2_out) { return true; }
     }
 
@@ -45,7 +42,6 @@ function router2(nodes){
             if (moreORless) { startX--; }                   // Если конец левее 
             else            { startX++; }                   // Если конец правее
         } 
-        console.log(`x = ${startX} | y = ${startY}`);
         if (ifX) { if (startY == endY)  { return true; } }  // Условие
         else { if (startX == endX)      { return true; } }
         
@@ -84,9 +80,6 @@ function router(way , start){
     x = start[0]; y = start[1];
     muving = []; test = true;
 
-    // var obj = document.getElementById(`${x}:${y}`); 
-    // obj.innerHTML = `<${x}:${y}>`; obj.style.background = "#006d5b";  obj.style.color = "white"
-
     while (test){
         // Сдиг по маршруту
         if (way[0] == 'x') { 
@@ -117,14 +110,4 @@ function router(way , start){
 
     }
     return muving;
-}
-
-function testT(){
-    for (x = xMax; x >= 1; x-- ){
-        for (y = yMax; y >= 1; y --){
-            area[x][y] = 0;
-            var obj = document.getElementById(`${x}:${y}`); 
-            obj.style.background = "white";  obj.style.color = "white";
-        }
-    }
 }

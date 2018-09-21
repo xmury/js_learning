@@ -7,6 +7,7 @@
 	<title>PaoPao</title>
 	<script src="scripts.js"></script>
 	<script src="waySeacher.js"></script>
+	<script src="test.js"></script>
 	<style>
 		.form {
 			border: 1px solid black;
@@ -24,20 +25,15 @@
 			/* float: left */
 			display: inline;
 		}
-		
+		#generation {
+			text-align: center;
+		}
 	</style>
 </head>
 	<body>
 		<div id = 'generation'>
-			<input type="text" class="form" id="x"    placeholder="X" value="10">
-			<input type="text" class="form" id="y"    placeholder="Y" value="5">
 			<button class="btn" onclick="genArea()">Генерация</button>
-			<hr>
-			<input type="text" class="form" id="xx"    placeholder="x">
-			<input type="text" class="form" id="yy"    placeholder="y">
-
-			<button class="btn" onclick="stalker()">S.T.A.K.E.R</button>
-			<button class="btn" onclick="testT()">Test</button>
+			<button class="btn" onclick="AreaUpdate()">Обновить Поле</button>
 			<hr>
 		</div>
 		<div id = 'space'>  

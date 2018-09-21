@@ -1,14 +1,13 @@
-var area = []; var plan = [[]];
+var area = []; xMax = 16; yMax = 8;
 var arr = ['', 'red', 'blue', 'green' , '#806b2a' , 'brown' , '#cc6c5c' , 'orange'];
+var min = 1; var max = arr.length-1;
 var button1 = []; var button2 = []; var xMax = 0; var yMax = 0;
+var widthBox = `${100/xMax}%`; var heightBox = `${100/yMax}%`;
 
 function genArea(){                                                     // Создание и вывод поля
-    xMax = +document.getElementById('x').value;
-    yMax = +document.getElementById('y').value;
-    var widthBox = `${100/xMax}%`;
-    var heightBox = `${100/yMax}%`;
+    xMax = 16; yMax = 8;
+    var widthBox = `${100/xMax}%`; var heightBox = `${100/yMax}%`;
 
-    // GenArea
     for (var x = 1; x <= xMax; x++ ){ area[x] = []; }
 
     var div_area = document.createElement('div');
@@ -16,14 +15,12 @@ function genArea(){                                                     // Со�
     
     var x = 1; var y = 1;
     for (; y <= yMax; y++ ){
-        plan[x] = [];
         for (; x <= xMax; x++ ){
-            var min = 1; var max = arr.length-1;
             var rand = min - 0.5 + Math.random() * (max - min + 1); rand = Math.round(rand);            
-            
+    
             area[x][y] = rand;
 
-            div_area.innerHTML += `<button class='btn' 
+            div_area.innerHTML += `<button class='btn2' 
             onclick="clicker([${x},${y}])" id = '${x}:${y}'
             style=' width: ${widthBox}; height: ${heightBox}; 
             background:${arr[rand]};'>${x}:${y}</button>`;
@@ -34,12 +31,10 @@ function genArea(){                                                     // Со�
 
     // Добавление пустот по краям
     area[0] = []; area[xMax+1] = [];
-    console.log(xMax+1);
     y = 0; for (var x = 0; x <= xMax+1; x++) { area[x][y] = 0; }
     y = yMax+1; for (var x = 0; x <= xMax+1; x++) { area[x][y] = 0; }
     x = 0; for (var y = 0; y <= yMax+1; y++) { area[x][y] = 0; }
     x = xMax+1; for (var y = 0; y <= yMax+1; y++) { area[x][y] = 0; }
-
 }
 
 function clicker(val){                                                  // Обработка нажатия на кнопку
@@ -65,27 +60,32 @@ function clicker(val){                                                  // Об�
             button1 = []; button2 = [];                                 // Очистить button1 и button2
             console.log(false); 
         }                                    
+    }
 
-        
+    if(testArea()){
+        alert('Победа!');
+        location.reload();
     }
 }
 
 function clearButton(){                                                 // Отчистить кнопку
     var obj = document.getElementById(`${button1[0]}:${button1[1]}`);   // Отчистка кнопки 1   
-    // obj.innerHTML = "."; obj.style.color = "white";  
+     obj.innerHTML = "."; obj.style.color = "white";  
     obj.style.background = "white"; 
 
     var obj = document.getElementById(`${button2[0]}:${button2[1]}`);   // Отчистка кнопки 2
-    // obj.innerHTML = ".";  obj.style.color = "white";  
+     obj.innerHTML = ".";  obj.style.color = "white";  
     obj.style.background = "white";
 
-    area[button1[0][button1[1]]] = 0;                                   // "Удаление" кнопки 1
-    area[button1[0][button1[1]]] = 0;                                   // "Удаление" кнопки 2
+    x = button1[0]; y = button1[1]; area[x][y] = 0;
+    x = button2[0]; y = button2[1]; area[x][y] = 0;
+
     button1 = []; button2 = [];                                         // Очистить button1 и button2
     console.log(true);
 }
 
 function testArea(){                                                    // Проверка поля на пустоту
+    var x =1; var y = 1; 
     for (; y <= yMax; y++ ){
         for (; x <= xMax; x++ ){
             if (area[x][y] != 0) {
